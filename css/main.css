@@ -1,0 +1,19 @@
+.clear:after { content:''; display:block; clear:both; }
+.header{ height:92px; background-color: beige; }
+.header div{ width: 1040px; margin: 0 auto; background-color: antiquewhite; }
+.header .logo{  display: inline-block;  width: 92px;  height:92px;  float: left; }
+.header .logo img{  display: block;  width: 92px;  height:92px;  }
+
+.header .nav{  margin-left: 200px;  float: left;  display: inline-block;  }
+.header .nav li{  display: inline-block;  }
+.header .nav a{  line-height: 92px;  }
+.header .social{ float: right; display: inline-block; }
+.header .social li{  display: inline-block;  }
+.header .social a{  line-height: 92px;  width:32px;  }
+
+.content .main {width: 1040px; margin: 0 auto;background-color: aquamarine}
+.content .main .row {height: 485px; background-color: aqua}
+
+.footer{ height: 90px; background-color: blueviolet;}
+
+.aboutMe, .photograph, .skill{width: 1040px; height: 500px; background-color: cadetblue; margin: 0 auto;}

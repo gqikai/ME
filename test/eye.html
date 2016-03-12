@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /**{*/
+            /*margin: 0;*/
+            /*padding: 0;*/
+        /*}*/
+        body{
+            /*background-color: black;*/
+        }
+        #eye li{
+            width: 51px;
+            height: 51px;
+            background-image: url(../img/eyes.gif);
+            position: absolute;
+        }
+        .one{
+            opacity:0;
+            background-position: -135px -2px;
+        }
+        .two{
+            opacity:0;
+            background-position: -71px -2px;
+        }
+        .three{
+            opacity:0;
+            background-position: -7px -1px;
+        }
+
+        .one{
+            -webkit-animation: first 5s 1 ease-in;
+
+        }
+        .two{
+            -webkit-animation: second 5s 1 linear;
+            animation-delay: 4s;
+        }
+        .three{
+            -webkit-animation: third 5s 1 ease-out;
+            animation-delay: 8s;
+        }
+        @-webkit-keyframes first {
+            0%{opacity:1; }
+            80%{ opacity: 1 }
+            100% { opacity: 0; -webkit-transform: rotate(3600deg);}
+        }
+        @-webkit-keyframes second {
+            0%{ opacity: 0  }
+            20%{ opacity: 1  }
+            80%{ opacity: 1 }
+            100% { opacity: 0; -webkit-transform: rotate(3000deg); }
+        }
+        @-webkit-keyframes third {
+            0%{ opacity: 0  }
+            20%{ opacity: 1  }
+            100% { opacity: 1 ;-webkit-transform: rotate(1800deg); }
+        }
+
+    </style>
+</head>
+<body>
+<ul id="eye">
+    <li class="one"></li>
+    <li class="two"></li>
+    <li class="three"></li>
+</ul>
+</body>
+</html>

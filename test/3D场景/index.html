@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+body{margin:0;}
+#wrap{width:inherit;height:900px;margin:0; border:1px solid #000; position:relative;background-image: url('img/bg4.jpg');}
+#wrap img{ position:absolute;}
+#wrap img:nth-of-type(1){ left:0;top:0; z-index:0;}
+#wrap img:nth-of-type(2){ left:0;top:0; z-index:1;}
+</style>
+</head>
+<body>
+<div id="wrap">
+    <img src="img/touches.png" />
+	<img src="img/touches2.png" />
+</div>
+<script>
+window.onload=function()
+{
+	var oWrap=document.getElementById("wrap");
+	var aImg=oWrap.getElementsByTagName("img");
+	var iMax=2;
+	for(var i=0;i<aImg.length;i++)
+	{
+		aImg[i].startX=parseInt(getStyle(aImg[i],"left"));
+        aImg[i].startY=parseInt(getStyle(aImg[i],"top"));
+	}
+	window.onmousemove=function(ev)
+	{
+		var iX=ev.clientX-(document.body.clientWidth/2);
+        var iY=ev.clientY-(window.innerHeight/2);
+		for(var i=0;i<aImg.length;i++)
+		{
+			var iZindex=getStyle(aImg[i],"zIndex");
+			var iDisX=-parseInt(iX/iMax*(iMax-iZindex)/5);
+            var iDisY=-parseInt(iY/iMax*(iMax-iZindex)/5);
+			aImg[i].style.left=aImg[i].startX+iDisX+"px";
+            aImg[i].style.top=aImg[i].startX+iDisY-100+"px";
+		}
+	};
+};
+function getStyle(obj,attr)
+{
+	if( obj.currentStyle){
+			return obj.currentStyle[attr];        
+	}
+	return getComputedStyle(obj)[attr];        
+}
+function getX(obj)
+{
+	var iLeft=0;
+	while(obj)
+	{
+		iLeft+=obj.offsetLeft;
+		obj=obj.offsetParent;
+	}
+	return iLeft;
+	
+}
+function getY(obj)
+{
+    var iTop=0;
+    while(obj)
+    {
+        iTop+=obj.offsetTop;
+        obj=obj.offsetParent;
+    }
+    return iTop;
+
+}
+</script>
+</body>
+</html>

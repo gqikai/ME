@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+body{margin:0;}
+#wrap{width:800px;height:500px;margin:30px auto; border:1px solid #000; position:relative; -webkit-perspective:300px; -webkit-transform-style:preserve-3d; -webkit-perspective-origin:center center;/* transition:3s;*/}
+#wrap img{ position:absolute;}
+#wrap img:nth-of-type(1){ left:200px;top:200px; -webkit-transform:translateZ(-25px);}
+#wrap img:nth-of-type(2){ left:300px;top:180px; -webkit-transform:translateZ(-50px);}
+#wrap img:nth-of-type(3){ left:100px;top:100px; -webkit-transform:translateZ(-75px);}
+#wrap img:nth-of-type(4){ left:400px;top:110px; -webkit-transform:translateZ(-100px);}
+/*#wrap:hover{-webkit-perspective-origin:800px center;}*/
+</style>
+</head>
+<body>
+<div id="wrap">
+	<img src="img/img1%20(1).jpg" />
+    <img src="img/img1%20(2).jpg" />
+    <img src="img/img1%20(3).jpg" />
+    <img src="img/img1%20(4).jpg" />
+</div>
+<script>
+window.onload=function()
+{
+	var oWrap=document.getElementById("wrap");
+	oWrap.onmousemove=function(ev)
+	{
+		var iX=parseInt(ev.clientX-getX(this));
+		var iOld=parseInt(getStyle(this,"WebkitPerspectiveOrigin"));
+		var iTimer=Math.abs(iOld-iX);
+		iTimer=iTimer<30?0:parseInt(iTimer);
+		this.style.transition=iTimer+"ms";
+		this.style.WebkitPerspectiveOrigin=iX+"px center";
+		
+	};
+};
+function getStyle(obj,attr)
+{
+	if( obj.currentStyle){
+			return obj.currentStyle[attr];        
+	}
+	return getComputedStyle(obj)[attr];        
+}
+function getX(obj)
+{
+	var iLeft=0;
+	while(obj)
+	{
+		iLeft+=obj.offsetLeft;
+		obj=obj.offsetParent;
+	}
+	return iLeft;
+	
+}
+</script>
+</body>
+</html>
