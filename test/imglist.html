@@ -11,15 +11,32 @@
             for( var i = 0; i < imgList.length; i ++){
                 imgList[i].style.left = offset * i + 'px';
                 imgList[i].isLeft = true;
-                indexList[i].
+                indexList[i].onmouseover = (function(){
+                    var index = i;
+                    return function (){
+                        if(imgList[index].isLeft === true){
+                            for(var j = index; j < imgList.length; j ++){
+                                imgList[j].style.left = 800 - 470 - (4 - j) * 20 + 'px';
+                                imgList[j].isLeft = false;
+                            }
+                        }else {
+                            for(var j = index; j >= 0 ; j --){
+                                imgList[j].style.left = offset * j + 'px';
+                                imgList[j].isLeft = true;
+                            }
+
+                        }
+                    }
+                })();
             }
         }
     </script>
     <style>
         ul, li, div {padding: 0; margin: 0;}
-        ul {width: 550px; height: 150px; background-color: antiquewhite; list-style: none; padding: 0;}
+        ul {width: 500px; height: 150px; background-color: antiquewhite; list-style: none; padding: 0;
+            overflow: hidden;}
         li {  display: inline-block; position: absolute; left: 0;}
-        ul div {position: absolute; left: 0; top: 0; width: 20px; height: 100%;  background-color: aquamarine; opacity: 50;}
+        ul div {position: absolute; left: 0; top: 0; width: 20px; height: 100%;  background-color: aquamarine; opacity: 0.5;}
     </style>
 </head>
 <body>
